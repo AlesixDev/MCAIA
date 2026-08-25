@@ -1,0 +1,131 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --canvas: 241 241 241;
+  --surface: 255 255 255;
+  --surface-raised: 255 255 255;
+  --surface-sunken: 245 245 245;
+  --line: 236 236 236;
+  --line-strong: 220 220 220;
+  --body: 20 20 20;
+  --muted: 88 88 88;
+  --faint: 130 130 130;
+  --accent: 60 131 246;
+  --accent-foreground: 255 255 255;
+  --good: 27 127 75;
+  --warn: 178 106 0;
+  --bad: 180 35 24;
+  --idle: 140 140 140;
+
+  --panel-shadow: 0 1px 2px rgb(0 0 0 / 0.04), 0 12px 32px -12px rgb(0 0 0 / 0.1);
+
+  color-scheme: light;
+}
+
+.dark {
+  --canvas: 7 7 7;
+  --surface: 15 15 15;
+  --surface-raised: 22 22 22;
+  --surface-sunken: 27 27 27;
+  --line: 35 35 35;
+  --line-strong: 52 52 52;
+  --body: 240 240 240;
+  --muted: 176 176 176;
+  --faint: 132 132 132;
+  --accent: 60 131 246;
+  --accent-foreground: 255 255 255;
+  --good: 53 160 106;
+  --warn: 208 138 30;
+  --bad: 224 96 85;
+  --idle: 140 140 140;
+
+  --panel-shadow: 0 1px 2px rgb(0 0 0 / 0.5), 0 16px 40px -16px rgb(0 0 0 / 0.7);
+
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-canvas: rgb(var(--canvas));
+  --color-surface: rgb(var(--surface));
+  --color-surface-raised: rgb(var(--surface-raised));
+  --color-surface-sunken: rgb(var(--surface-sunken));
+  --color-line: rgb(var(--line));
+  --color-line-strong: rgb(var(--line-strong));
+  --color-body: rgb(var(--body));
+  --color-muted: rgb(var(--muted));
+  --color-faint: rgb(var(--faint));
+  --color-accent: rgb(var(--accent));
+  --color-accent-foreground: rgb(var(--accent-foreground));
+  --color-good: rgb(var(--good));
+  --color-warn: rgb(var(--warn));
+  --color-bad: rgb(var(--bad));
+  --color-idle: rgb(var(--idle));
+
+  --color-background: rgb(var(--surface));
+  --color-foreground: rgb(var(--body));
+  --color-muted-foreground: rgb(var(--muted));
+  --color-border: rgb(var(--line));
+  --color-destructive: rgb(var(--bad));
+  --color-primary: rgb(var(--accent));
+  --color-primary-foreground: rgb(var(--accent-foreground));
+
+  --font-sans: var(--font-onest), system-ui, sans-serif;
+  --font-mono: var(--font-mono-code), "Cascadia Code", Consolas, monospace;
+
+  --radius-xs: 6px;
+  --radius-sm: 9px;
+  --radius-md: 13px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+
+  --shadow-panel: var(--panel-shadow);
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --animate-fade-in: fade-in 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-rise-in: rise-in 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+@layer base {
+  * {
+    border-color: rgb(var(--line));
+  }
+
+  body {
+    background-color: rgb(var(--canvas));
+    color: rgb(var(--body));
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: rgb(var(--line-strong));
+    border: 3px solid transparent;
+    background-clip: content-box;
+    border-radius: 999px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
