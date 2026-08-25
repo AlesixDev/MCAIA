@@ -1,0 +1,70 @@
+name: Bug report
+description: Something in mcaia does not behave as documented
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        If the problem is that an imported model looks wrong — parts in the wrong place, wrong size, no texture — use the **Model import problem** template instead. It asks for the file, which is the only way that class of bug gets fixed.
+
+        If animations look broken but the model itself is fine, this is the right place.
+
+  - type: textarea
+    id: what-happens
+    attributes:
+      label: What happens
+      description: What you observed, and what you expected instead.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Import this model
+        2. Ask for "walk cycle", 1 second, loop
+        3. …
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Where it happens
+      options:
+        - Importing a model
+        - Generating an animation
+        - The 3D preview
+        - Exporting
+        - Opening the export in Blockbench
+        - Accounts and projects
+        - Somewhere else
+    validations:
+      required: true
+
+  - type: input
+    id: model
+    attributes:
+      label: Model and engine
+      description: The local model you are running, from `GET /api/v1/health`.
+      placeholder: ollama:qwen3:14b
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Backend output
+      description: The relevant part of what the API printed, and the error the interface showed if any.
+      render: text
+    validations:
+      required: false
+
+  - type: input
+    id: environment
+    attributes:
+      label: OS, Go and Node versions
+      placeholder: Windows 11, go1.24.0, node 20.11
+    validations:
+      required: false

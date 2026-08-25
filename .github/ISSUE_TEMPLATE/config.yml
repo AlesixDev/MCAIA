@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Architecture and how a prompt becomes keyframes
+    url: https://github.com/AlesixDev/MCAIA/blob/main/README.md
+    about: The request pipeline, the packages, and what each import format loses.
+  - name: Known limitations
+    url: https://github.com/AlesixDev/MCAIA/blob/main/README.md#limitations
+    about: What is missing on purpose, and why. Check here before filing.
+  - name: Questions and ideas
+    url: https://github.com/AlesixDev/MCAIA/discussions
+    about: Anything that is not a bug report or a concrete feature request.

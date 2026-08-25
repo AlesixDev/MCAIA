@@ -1,0 +1,72 @@
+name: Model import problem
+description: A model imports with the wrong geometry, scale, pivots or texture
+labels: ["bug", "importer"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Every format hides its own trap: OBJ carries no hierarchy and stores its texture in separate files, glTF keeps geometry in binary accessors, and both are usually exported in block units rather than Blockbench pixels. Almost none of these can be diagnosed without the file itself.
+
+        Before filing, check whether the interface printed a note when you uploaded — the import reports what it had to guess or could not find.
+
+  - type: dropdown
+    id: format
+    attributes:
+      label: Format
+      options:
+        - .bbmodel
+        - .gltf or .glb
+        - .obj
+    validations:
+      required: true
+
+  - type: dropdown
+    id: symptom
+    attributes:
+      label: What is wrong
+      multiple: true
+      options:
+        - Nothing appears at all
+        - The model is far too small or too large
+        - Parts are in the wrong place
+        - Parts are the wrong size or stretched
+        - No texture
+        - The texture is on the wrong faces
+        - Parts come apart when animated
+        - Something else
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Import notes
+      description: The messages the interface showed when the model was uploaded.
+      render: text
+    validations:
+      required: false
+
+  - type: input
+    id: exporter
+    attributes:
+      label: What exported the file
+      placeholder: Blockbench 5.1.6, Blender 4.2, …
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ### The file
+
+        Attach the model by dragging it into this box. For OBJ, include the `.mtl` and the texture as well — without them the import cannot be reproduced.
+
+        If you cannot share the model, a screenshot of its outliner in the tool that exported it, plus the rig from `GET /api/v1/projects/{id}`, is the next best thing.
+
+  - type: checkboxes
+    id: file
+    attributes:
+      label: Attached
+      options:
+        - label: I have attached the model, or explained why I cannot
+          required: true
